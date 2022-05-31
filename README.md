@@ -1,2 +1,2 @@
-# Amazing-Bowling-Sample
+# Amazing Bowling Sample
 Amazing Bowling Game Sample.
