@@ -9,11 +9,25 @@ public class ShooterRotator : MonoBehaviour
         Idle, Vertical, Horizontal, Ready
     }
     [Header("Statement")]
-    [SerializeField] private RotateState state;
+    [SerializeField] private RotateState state = RotateState.Idle;
 
     [Header("Information")]
-    [SerializeField] private float verticalRotateSpeed = 360f;
-    [SerializeField] private float horizontalRotateSpeed = 360f;
+    [SerializeField] private float verticalRotateSpeed = 0f;
+    [SerializeField] private float horizontalRotateSpeed = 0f;
+
+    private void Start()
+    {
+        ClearRoatate();
+    }
+
+    private void ClearRoatate()
+    {
+        state = RotateState.Idle;
+
+        // TODO : 외부에서 데이터 값을 불러오는 곳
+        verticalRotateSpeed = 360f;
+        horizontalRotateSpeed = 360f;
+    }   // 회전값 초기화 함수 , 김민섭_220606
 
     private void Update()
     {
