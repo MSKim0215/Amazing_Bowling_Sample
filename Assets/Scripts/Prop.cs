@@ -21,6 +21,22 @@ public class Prop : MonoBehaviour
         score = 5;
         hp = 10f;
 
-        explosionParticle = GetComponentInChildren<ParticleSystem>();
+        explosionParticle = Resources.Load<ParticleSystem>("Prefabs/SmallExplosion");
     }   // Щ照 蟾晦�� л熱 , 梯團撥_220606
+
+    public void TakeDamage(float _value)
+    {
+        hp -= _value;
+
+        if (hp <= 0)
+        {
+            ParticleSystem effect = Instantiate(explosionParticle, transform.position, transform.rotation);
+            
+            AudioSource sound = effect.GetComponent<AudioSource>();
+            sound.Play();
+
+            Destroy(effect.gameObject, effect.duration);
+            gameObject.SetActive(false);
+        }
+    }   // 等嘐雖 л熱 , 梯團撥_220606
 }
