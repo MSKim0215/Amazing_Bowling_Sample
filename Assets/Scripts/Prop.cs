@@ -18,11 +18,21 @@ public class Prop : MonoBehaviour
     private void ClearProp()
     {
         // TODO : 외부에서 데이터 값 불러오는 곳
-        score = 5;
-        hp = 10f;
+        if(tag == "SmallProp")
+        {
+            score = 5;
+            hp = 10f;
 
-        explosionParticle = Resources.Load<ParticleSystem>("Prefabs/SmallExplosion");
-    }   // 프롭 초기화 함수 , 김민섭_220606
+            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/SmallExplosion");
+        }
+        else if(tag == "BigProp")
+        {
+            score = 5;
+            hp = 10f;
+
+            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/BigExplosion");
+        }
+    }   // 프롭 초기화 함수 , 김민섭_220616
 
     public void TakeDamage(float _value)
     {
