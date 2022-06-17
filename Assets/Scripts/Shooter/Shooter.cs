@@ -34,7 +34,7 @@ public class Shooter : MonoBehaviour
     private void SetShooter()
     {
         firePos = transform.Find("FirePos");
-        ball = Resources.Load<Rigidbody>("Prefabs/Ball");
+        ball = Resources.Load<Rigidbody>("Prefabs/Ball/Ball");
         powerSlider = transform.Find("Canvas/Power Slider").GetComponent<Slider>();
         shootingAudio = GetComponent<AudioSource>();
         fireClip = Resources.Load<AudioClip>("Sounds/Sfx/Shoot_00");

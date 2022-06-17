@@ -23,14 +23,14 @@ public class Prop : MonoBehaviour
             score = 5;
             hp = 10f;
 
-            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/SmallExplosion");
+            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/Effect/SmallExplosion");
         }
         else if(tag == "BigProp")
         {
-            score = 5;
-            hp = 10f;
+            score = 30;
+            hp = 60f;
 
-            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/BigExplosion");
+            explosionParticle = Resources.Load<ParticleSystem>("Prefabs/Effect/BigExplosion");
         }
     }   // ÇÁ·Ó ÃÊ±âÈ­ ÇÔ¼ö , ±è¹Î¼·_220616
 
