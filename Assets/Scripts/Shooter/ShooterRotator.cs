@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShooterRotator : MonoBehaviour
 {
+    private Shooter shooter;
+
     private enum RotateState
     {
         Idle, Vertical, Horizontal, Ready
@@ -15,7 +17,12 @@ public class ShooterRotator : MonoBehaviour
     [SerializeField] private float verticalRotateSpeed = 0f;
     [SerializeField] private float horizontalRotateSpeed = 0f;
 
-    private void Start()
+    private void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
+
+    private void OnEnable()
     {
         ClearRoatate();
     }
@@ -23,6 +30,8 @@ public class ShooterRotator : MonoBehaviour
     private void ClearRoatate()
     {
         state = RotateState.Idle;
+        shooter.enabled = false;
+        transform.rotation = Quaternion.identity;
 
         // TODO : 외부에서 데이터 값을 불러오는 곳
         verticalRotateSpeed = 360f;
@@ -64,9 +73,12 @@ public class ShooterRotator : MonoBehaviour
                     else if (Input.GetButtonUp("Fire1"))
                     {
                         state = RotateState.Ready;
+                        shooter.enabled = true;
                     }
                 }
                 break;
         }
     }
+
+
 }
