@@ -65,8 +65,13 @@ public class Ball : MonoBehaviour
         return Mathf.Max(0, damage);
     }   // µ¥¹ÌÁö °è»ê ÇÔ¼ö , ±è¹Î¼·_220606
 
-    private void DestroyBall(float _time = 0f) => Destroy(gameObject, _time);   
+    private void DestroyBall(float _time = 0f) => Destroy(gameObject, _time);
     // °ø ÆÄ±« ÇÔ¼ö , ±è¹Î¼·_220606
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnBallDestroy();
+    }
 
     private void PlayEffect()
     {
@@ -74,6 +79,8 @@ public class Ball : MonoBehaviour
 
         explosionParticle.Play();
         explosionAudio.Play();
+
+        GameManager.instance.OnBallDestroy();
 
         Destroy(explosionParticle.gameObject, explosionParticle.duration);
     }   // ÀÌÆåÆ® ½ÇÇà ÇÔ¼ö , ±è¹Î¼·_220606

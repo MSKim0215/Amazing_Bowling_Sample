@@ -35,6 +35,7 @@ public class SpawnGenerator : MonoBehaviour
         GameObject selectedPrefab = propPrefabs[selection];
         Vector3 spawnPos = GetRandomPosition();
         GameObject instance = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+        instance.transform.SetParent(transform);
         props.Add(instance);
     }   // ½ºÆù ÇÔ¼ö , ±è¹Î¼·_220617
 

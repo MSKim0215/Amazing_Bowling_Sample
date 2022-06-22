@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
+    private CamFollow cam;
+
     private Transform firePos;      // ¹ß»çÀ§Ä¡
 
     private float minForce = 15f;
@@ -33,6 +35,7 @@ public class Shooter : MonoBehaviour
 
     private void SetShooter()
     {
+        cam = FindObjectOfType<CamFollow>();
         firePos = transform.Find("FirePos");
         ball = Resources.Load<Rigidbody>("Prefabs/Ball/Ball");
         powerSlider = transform.Find("Canvas/Power Slider").GetComponent<Slider>();
@@ -71,7 +74,7 @@ public class Shooter : MonoBehaviour
             currentForce = maxForce;
             Fire();
         }
-        else if(Input.GetButtonDown("Fire1"))
+        else if(!isFire && Input.GetButtonDown("Fire1"))
         {
             currentForce = minForce;
 
@@ -100,5 +103,7 @@ public class Shooter : MonoBehaviour
         shootingAudio.Play();
 
         currentForce = minForce;
+
+        cam.SetTarget(ballInstance.transform, CamFollow.State.TRACKING);
     }   // °ø ¹ß»ç ÇÔ¼ö , ±è¹Î¼·_220616
 }

@@ -49,7 +49,6 @@ public class CamFollow : MonoBehaviour
         smoothTime = 0.2f;
 
         state = State.IDLE;
-
     }
 
     private void Move()

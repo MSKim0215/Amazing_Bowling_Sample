@@ -45,6 +45,8 @@ public class Prop : MonoBehaviour
             AudioSource sound = effect.GetComponent<AudioSource>();
             sound.Play();
 
+            GameManager.instance.AddScore(score);
+
             Destroy(effect.gameObject, effect.duration);
             gameObject.SetActive(false);
         }
